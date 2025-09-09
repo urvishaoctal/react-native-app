@@ -29,13 +29,21 @@ export default function FormDemo() {
         }}
         className="size-20 rounded-full ring-1 ring-gray-900 ml-40"
       />
-      <Text className="text-2xl font-bold text-center mb-6"> Form</Text>
+      <Text className="text-2xl font-bold text-center mb-6">Register</Text>
 
-      <Text className="text-lg font-medium mb-1">Name</Text>
+      <Text className="text-lg font-medium mb-1"> FirstName</Text>
       <TextInput
         value={name}
         onChangeText={setName}
         placeholder="Enter your name"
+        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
+      />
+
+<Text className="text-lg font-medium mb-1"> LastName</Text>
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        placeholder="Enter your Lastname"
         className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
       />
 

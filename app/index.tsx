@@ -32,16 +32,7 @@ function MyTabs() {
           ),
         }}
       />
-      <Tab.Screen
-        name="Layout"
-        component={Layout}
-        options={{
-          tabBarLabel: "Layout",
-          tabBarIcon: () => (
-            <AntDesign name="windowso" color="darkblue" size={24} />
-          ),
-        }}
-      />
+      
       <Tab.Screen
         name="Demo"
         component={Profile}

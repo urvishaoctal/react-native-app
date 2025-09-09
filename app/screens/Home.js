@@ -52,7 +52,7 @@ export default function FormDemo() {
         Remember me</Text>
 
       <TouchableOpacity
-       title="Go to Layout"
+       
        onPress={() => navigation.navigate('')}
         className="bg-blue-600 py-4 rounded-2xl"
       >

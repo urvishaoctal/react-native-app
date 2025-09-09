@@ -25,11 +25,11 @@ export default function FormDemo() {
   };
 
   return (
-    <View className="flex-1 bg-gray-100 px-6 py-10  h-60 w-50 bg-blue-200">
+    <View className="flex-1 bg-gray-100 px-6  h-60 w-50 bg-blue-200">
      
 
      
-      <View className="border-2 rounded-2xl mt-40 p-20 bg-red-200">
+      <View className="border-2 rounded-2xl mt-10 p-20 bg-red-200">
       <Text className="text-2xl font-bold text-center mb-6 text-blue-600">Login your account </Text>
       <Text className="text-lg font-medium mb-1">Email address</Text>
       <TextInput

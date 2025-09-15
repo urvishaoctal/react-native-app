@@ -1,18 +1,17 @@
 import React from "react";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {  UserPen, House } from 'lucide-react-native';
+
 import Layout from "./screens/Layout";
-import Home from "./screens/Home.js";
+import Home from "./screens/Home";
+import Profile from "./screens/Profile";
+import Login from "./screens/Login";
+import Register from "./screens/Register"
 
 
-import Profile from "./screens/Profile.js";
-
-// const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
-
 function MyTabs() {
   return (
     <Tab.Navigator
@@ -27,61 +26,70 @@ function MyTabs() {
         component={Home}
         options={{
           tabBarLabel: "Home",
-          tabBarIcon: () => (
-            <AntDesign name="home" color="darkblue" size={24} />
-          ),
+          tabBarIcon: () =>  <House   color="darkblue" size={24} />,
         }}
       />
-      
       <Tab.Screen
-        name="Demo"
+        name="Profile"
         component={Profile}
         options={{
           tabBarLabel: "Profile",
-          tabBarIcon: () => (
-            <AntDesign name="layout" color="darkblue"size={25} />
-          ),
+          tabBarIcon: () => <UserPen  color="darkblue" size={24} />,
+        }}
+      />
+       <Tab.Screen
+        name="Layout"
+        component={Layout}
+        options={{
+          tabBarLabel: "Layout",
+          tabBarIcon: () => <House  color="darkblue" size={24} />,
         }}
       />
     </Tab.Navigator>
   );
 }
 
-// ----- Drawer with Tabs inside -----
+
+const Drawer = createDrawerNavigator();
+function AppDrawer() {
+  return (
+    <Drawer.Navigator initialRouteName="Main">
+      <Drawer.Screen
+        name="Main"
+        component={MyTabs}
+        options={{
+          drawerLabel: "Home",
+          drawerIcon: () => <House  color="darkblue" size={24} />,
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          drawerLabel: "Profile",
+          // drawerIcon: () => <AntDesign name="contacts" color="darkblue" size={24} />,
+        }}
+      />
+      <Drawer.Screen
+        name="Layout"
+        component={Layout}
+        options={{
+          drawerLabel: "Layout",
+          // drawerIcon: () => <AntDesign name="layout" color="darkblue" size={24} />,
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+// --- Root Stack ---
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-      <Drawer.Navigator initialRouteName="Main">
-        <Drawer.Screen
-          name="Main"
-          component={MyTabs}
-          options={{
-            drawerLabel: "Home",
-            drawerIcon: ({ color, size }) => (
-              <AntDesign name="home" color="darkblue" size={24} />
-            ),
-          }}
-        />
-       
-        <Drawer.Screen
-          name="Profile"
-          component={Profile}
-          options={{
-            drawerLabel: "Profile",
-            drawerIcon: ({ color, size }) => (
-              <AntDesign name="layout" color="darkblue" size={24} />
-            ),
-          }}
-        />
-         <Drawer.Screen
-          name="Layout"
-          component={Layout}
-          options={{
-            drawerLabel: "Layout",
-            drawerIcon: ({ color, size }) => (
-              <AntDesign name="windowso" color="darkblue" size={24} />
-            ),
-          }}
-        />
-      </Drawer.Navigator>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="AppDrawer" component={AppDrawer} />
+      </Stack.Navigator>
   );
 }

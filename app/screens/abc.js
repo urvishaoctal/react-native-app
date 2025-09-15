@@ -1,0 +1,74 @@
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from "react-native";
+
+export default function Register({ navigation }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    return navigation.replace("AppDrawer");
+  };
+
+  return (
+    <View className="flex-1 bg-gray-100 px-6 py-10">
+      <Image
+        source={{
+          uri: "https://images.examples.com/wp-content/uploads/2018/11/forms-in-word.jpg",
+        }}
+        className="size-20 rounded-full ring-1 ring-gray-900 ml-40"
+      />
+      <Text className="text-2xl font-bold text-center mb-6">Register</Text>
+
+      <Text className="text-lg font-medium mb-1"> FirstName</Text>
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        placeholder="Enter your FistName"
+        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
+      />
+
+      <Text className="text-lg font-medium mb-1"> LastName</Text>
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        placeholder="Enter your Lastname"
+        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
+      />
+
+      <Text className="text-lg font-medium mb-1">Email</Text>
+      <TextInput
+        value={email}
+        onChangeText={setEmail}
+        placeholder="Enter your email"
+        keyboardType="email-address"
+        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
+      />
+
+      <Text className="text-lg font-medium mb-1">Password</Text>
+      <TextInput
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Enter your password"
+        secureTextEntry
+        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 bg-white text-base"
+      />
+
+      <TouchableOpacity
+        onPress={handleSubmit}
+        className="bg-blue-600 py-4 rounded-2xl"
+      >
+        <Text className="text-center text-white  text-lg font-semibold">
+          Register
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+}

@@ -38,12 +38,9 @@ export default function Home({navigation}) {
             <Text className="text-white text-4xl font-bold ">Get started</Text>
           </View>
 
-           <TouchableOpacity  onPress={() => navigation.replace("Login")} className="bg-red-500 rounded-full py-3  mt-5 mb-4">
-                     <Text className="text-white text-center text-lg font-semibold">
-               Login
-                     </Text>
-                     </TouchableOpacity>
-                     <TouchableOpacity  onPress={() => navigation.replace("Register")} className="bg-red-500 rounded-full py-3  mt-5 mb-4">
+         
+                    
+                     <TouchableOpacity  onPress={() => navigation.replace("Login")} className="bg-red-500 rounded-full py-3  mt-5 mb-4">
                      <Text className="text-white text-center text-lg font-semibold">
                    Logout
                      </Text>

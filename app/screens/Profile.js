@@ -1,6 +1,6 @@
 
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView,ImageBackground} from "react-native";
 
 export default function Profile() {
   const data = [
@@ -26,6 +26,11 @@ export default function Profile() {
   ];
 
   return (
+    <ImageBackground
+        source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} 
+         className="flex-1"
+        resizeMode="cover"
+      >
     <ScrollView className="flex-1 bg-gray-900 p-6">
 
       <View className="flex-row border-b border-gray-500 pb-2 mb-2">
@@ -51,5 +56,6 @@ export default function Profile() {
               
       ))}
     </ScrollView>
+    </ImageBackground>
   );
 }

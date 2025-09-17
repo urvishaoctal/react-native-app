@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -6,69 +7,70 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  Button,
+  ImageBackground
+
 } from "react-native";
 
-export default function Register({ navigation }) {
-  const [name, setName] = useState("");
+import { User, KeyRound,EyeOff,Eye } from 'lucide-react-native';
+
+
+export default function Register({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = () => {
-    return navigation.replace("AppDrawer");
-  };
+  const [showPass, setShowPass] = useState(false);
 
   return (
-    <View className="flex-1 bg-gray-100 px-6 py-10">
-      <Image
-        source={{
-          uri: "https://images.examples.com/wp-content/uploads/2018/11/forms-in-word.jpg",
-        }}
-        className="size-20 rounded-full ring-1 ring-gray-900 ml-40"
-      />
-      <Text className="text-2xl font-bold text-center mb-6">Register</Text>
+    <ImageBackground
+    source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} 
+    className="flex-1"
+    resizeMode="cover"
+  >
 
-      <Text className="text-lg font-medium mb-1"> FirstName</Text>
-      <TextInput
-        value={name}
-        onChangeText={setName}
-        placeholder="Enter your FistName"
-        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
-      />
+    
+    <View className="flex-1 justify-center ">
+      <View className=" bg-white rounded-3xl p-10">
+        {/* <Text className="text-xl font-bold mb-4">Register</Text> */}
 
-      <Text className="text-lg font-medium mb-1"> LastName</Text>
-      <TextInput
-        value={name}
-        onChangeText={setName}
-        placeholder="Enter your Lastname"
-        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
-      />
+        
+        <View className="flex-row items-center  border-gray-300 mb-4">
+{/*          
+           <Text className="text-lg font-medium mb-1">Creat new Password</Text> */}
+                       <TextInput
+                         value={password}
+                         onChangeText={setPassword}
+                         placeholder="Enter new password"
+                         secureTextEntry
+                         className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 bg-white text-base"
+                       />
+        </View>
 
-      <Text className="text-lg font-medium mb-1">Email</Text>
-      <TextInput
-        value={email}
-        onChangeText={setEmail}
-        placeholder="Enter your email"
-        keyboardType="email-address"
-        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 bg-white text-base"
-      />
+       
+        <View className="flex-row items-center  border-gray-300 mb-6">
+          
+          <TextInput
+                         value={password}
+                         onChangeText={setPassword}
+                         placeholder="Confirm password"
+                         secureTextEntry
+                         className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 bg-white text-base"
+                         
+                       />
+          
+        </View>
+        
 
-      <Text className="text-lg font-medium mb-1">Password</Text>
-      <TextInput
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Enter your password"
-        secureTextEntry
-        className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 bg-white text-base"
-      />
+        
+        <TouchableOpacity  onPress={() => navigation.replace("Login")} className="bg-red-500 rounded-full py-3 mb-4">
+          <Text className="text-white text-center text-lg font-semibold">
+      Submit
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={handleSubmit}
-        className="bg-blue-600 py-4 rounded-2xl"
-      >
-        <Text className="text-center text-white  text-lg font-semibold">
-          Register
-        </Text>
-      </TouchableOpacity>
+        
+       
+      </View>
     </View>
+  </ImageBackground>
   );
 }

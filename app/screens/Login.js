@@ -12,7 +12,7 @@ import {
 
 } from "react-native";
 
-import { User, KeyRound,ChartNoAxesCombined } from 'lucide-react-native';
+import { User, KeyRound,Slack,Eye,EyeOff } from 'lucide-react-native';
 
 
 export default function Login({navigation}) {
@@ -29,7 +29,9 @@ export default function Login({navigation}) {
 
     <View className="items-center mt-10">
    
-      <Text className="text-white text-4xl font-bold ">Octal Infotech</Text>
+      <Text className="text-white text-4xl font-bold">Octal Infotech<Slack className=""
+      size={26} color={"white"} />
+        </Text>
       
     </View>
     <View className="items-center mt-10">
@@ -41,7 +43,6 @@ export default function Login({navigation}) {
       <View className="bg-white rounded-3xl p-10">
         <Text className="text-xl font-bold mb-4">Login</Text>
 
-        {/* Email Input */}
         <View className="flex-row items-center border-b border-gray-300 mb-4">
           <User size={20} />
           <TextInput
@@ -52,7 +53,7 @@ export default function Login({navigation}) {
           />
         </View>
 
-        {/* Password Input */}
+      
         <View className="flex-row items-center border-b border-gray-300 mb-6">
           <KeyRound  size={20}  />
           <TextInput
@@ -61,9 +62,15 @@ export default function Login({navigation}) {
             secureTextEntry={!showPass}
             value={password}
             onChangeText={setPassword}
+            
           />
           <TouchableOpacity onPress={() => setShowPass(!showPass)}>
-           
+
+            {
+              showPass ? <Eye  size={20}/> : <EyeOff  size={20}/>
+            }
+
+        
           </TouchableOpacity>
         </View>
 
@@ -76,7 +83,7 @@ export default function Login({navigation}) {
 
        
         <View className="flex-row justify-between">
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.replace("abc")}>
             <Text className="text-red-500">Forgot Password?</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.replace("Register")}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView,ImageBackground } from "react-native";
 
 export default function TeamTable() {
   const data = [
@@ -25,8 +25,12 @@ export default function TeamTable() {
   ];
 
   return (
-    <ScrollView className="flex-1 bg-gray-900 p-6">
-
+    <ImageBackground
+    source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} 
+     className="flex-1"
+    resizeMode="cover"
+  >
+    <ScrollView className="flex-1  p-6">
       <View className="flex-row border-b border-gray-500 pb-2 mb-2">
         <Text className="flex-1 text-white font-bold">Name</Text>
         <Text className="flex-1 text-white font-bold">Title</Text>
@@ -47,8 +51,9 @@ export default function TeamTable() {
        
                 
              
-              
+            
       ))}
     </ScrollView>
+    </ImageBackground>  
   );
 }

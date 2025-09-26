@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from '@react-navigation/native';
 import {
   View,
@@ -19,6 +19,43 @@ export default function Register({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  useEffect(() => {
+      if (email) {
+        setEmailError(false)
+      }
+      if (password) {
+        setPasswordError(false)
+      }
+    }, [email,password]);
+  
+  
+    const  handleSubmit = () =>{
+  
+      if(!email){
+        setEmailError(true)
+      }else{
+        setEmailError(false)
+      }
+  
+      if(!password){
+        setPasswordError(true)
+      }else{
+        setPasswordError(false)
+      }
+  
+      if(!email || !password){
+        return false
+      }
+
+
+
+      return navigation.replace("Login")
+
+    }
+
 
   return (
     <ImageBackground
@@ -42,7 +79,7 @@ export default function Register({navigation}) {
             onChangeText={setEmail}
           />
         </View>
-
+         { emailError ? <Text className="text-red-400">please required email</Text> : ''}
        
         <View className="flex-row items-center border-b border-gray-300 mb-6">
           <KeyRound  size={20}  />
@@ -58,6 +95,8 @@ export default function Register({navigation}) {
             
           </TouchableOpacity>
         </View>
+        { passwordError ? <Text className="text-red-400">please required password</Text> : ''}
+
         <View className="flex-row items-center border-b border-gray-300 mb-6">
           <KeyRound  size={20}  />
           <TextInput
@@ -74,7 +113,7 @@ export default function Register({navigation}) {
         </View>
 
         
-        <TouchableOpacity  onPress={() => navigation.replace("AppDrawer")} className="bg-red-500 rounded-full py-3 mb-4">
+        <TouchableOpacity  onPress={handleSubmit} className="bg-red-500 rounded-full py-3 mb-4">
           <Text className="text-white text-center text-lg font-semibold">
         Sign up
           </Text>
@@ -93,5 +132,5 @@ export default function Register({navigation}) {
     </View>
   </ImageBackground>
   );
-}
+  }
 

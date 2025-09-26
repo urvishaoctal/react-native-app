@@ -26,9 +26,9 @@ export default function Profile() {
   ];
 
   return (
-    <ImageBackground
-        source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} 
-         className="flex-1"
+     <ImageBackground
+        source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} // replace with your image
+        className="flex-1"
         resizeMode="cover"
       >
     <ScrollView className="flex-1 bg-gray-900 p-6">
@@ -48,10 +48,10 @@ export default function Profile() {
           <Text className="flex-1 text-gray-200">{item.name}</Text>
           <Text className="flex-1 text-gray-200">{item.title}</Text>
           <Text className="flex-1 text-gray-200">{item.Contact}</Text>
-          
+        
         </View>
        
-                
+            
              
               
       ))}

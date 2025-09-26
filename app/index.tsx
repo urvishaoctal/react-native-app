@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {  UserPen, House,LayoutDashboard } from 'lucide-react-native';
+import {  UserPen, House,MonitorPlay } from 'lucide-react-native';
 
 import Layout from "./screens/Layout";
 import Home from "./screens/Home";
@@ -43,8 +43,8 @@ function MyTabs() {
         name="Layout"
         component={Layout}
         options={{
-          tabBarLabel: "Layout",
-          tabBarIcon: () => <LayoutDashboard  color="darkblue" size={24} />,
+          tabBarLabel: "Video",
+          tabBarIcon: () => <MonitorPlay  color="darkblue" size={25} />,
         }}
       />
     </Tab.Navigator>
@@ -79,8 +79,8 @@ function AppDrawer() {
         name="Layout"
         component={Layout}
         options={{
-          drawerLabel: "Layout",
-          drawerIcon: () => <LayoutDashboard   color="darkblue" size={24} />,
+          drawerLabel: "Video",
+          drawerIcon: () => <MonitorPlay color="darkblue" size={25} /> ,
         }}
       />
     </Drawer.Navigator>

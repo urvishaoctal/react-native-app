@@ -1,59 +1,91 @@
-import React from "react";
-import { View, Text, ScrollView,ImageBackground } from "react-native";
+import React, { useRef } from "react";
+import { StyleSheet, View,ScrollView,TextInput,Button } from "react-native";
+import { Video } from "expo-av";
 
-export default function TeamTable() {
-  const data = [
-    { name: "Rahul", title: "Web Designer", Contact:"9978899967" },
-    { name: " Milan", title: "Web Designer", Contact:"9878899975"},
-    { name: " Kuldip", title: "Web Designer", Contact:"9878899975"},
-    { name: "Yash", title: " Web Designer", Contact:"9878899975"},
-    { name: "Kishan", title: "Web Designer", Contact:"9878899975"},
-    { name: "Keyur", title: "Web Designer", Contact:"9878899975"},
-    { name: "Rahul", title: "Web Designer", Contact:"9978899967" },
-    { name: " Milan", title: "Web Designer", Contact:"9878899975"},
-    { name: " Kuldip", title: "Web Designer", Contact:"9878899975"},
-    { name: "Yash", title: " Web Designer", Contact:"9878899975"},
-    { name: "Kishan", title: "Web Designer", Contact:"9878899975"},
-    { name: "Keyur", title: "Web Designer", Contact:"9878899975"},
-    { name: "Rahul", title: "Web Designer", Contact:"9978899967" },
-    { name: " Milan", title: "Web Designer", Contact:"9878899975"},
-    { name: " Kuldip", title: "Web Designer", Contact:"9878899975"},
-    { name: "Yash", title: " Web Designer", Contact:"9878899975"},
-    { name: "Kishan", title: "Web Designer", Contact:"9878899975"},
-    { name: "Keyur", title: "Web Designer", Contact:"9878899975"},
-    
-  ];
+export default function Layout() {
+  const video = useRef(null);
 
   return (
-    <ImageBackground
-    source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} 
-     className="flex-1"
-    resizeMode="cover"
-  >
-    <ScrollView className="flex-1  p-6">
-      <View className="flex-row border-b border-gray-500 pb-2 mb-2">
-        <Text className="flex-1 text-white font-bold">Name</Text>
-        <Text className="flex-1 text-white font-bold">Title</Text>
-        <Text className="flex-1 text-white font-bold">Contact no.</Text>
-        
-      </View>
-
+    <ScrollView>
+    <View style={styles.container}  className="mt-5" >
       
-      {data.map((item, index) => (
-        <View
-          key={index}
-          className="flex-row border-b border-gray-500 py-3">
-          <Text className="flex-1 text-gray-200">{item.name}</Text>
-          <Text className="flex-1 text-gray-200">{item.title}</Text>
-          <Text className="flex-1 text-gray-200">{item.Contact}</Text>
-          
-        </View>
+      <Video
+      className="mt-5"
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", 
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+      />
        
-                
-             
-            
-      ))}
+      
+    
+      <Video
+      className="mb-10"
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", 
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+      />
+      <Video
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", 
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+      />
+      <Video className=""
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", 
+        }}rr
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+      />
+      <Video
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4", 
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+      />
+    </View>
     </ScrollView>
-    </ImageBackground>  
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#000",
+  },
+  video: {
+    width: 420,
+    height: 200,
+    
+  },
+  comment: {
+    padding: 10,
+    fontSize: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+  },
+});

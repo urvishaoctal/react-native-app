@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from '@react-navigation/native';
 import {
   View,
@@ -19,7 +19,41 @@ export default function Login({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
+  useEffect(() => {
+    if (email) {
+      setEmailError(false)
+    }
+    if (password) {
+      setPasswordError(false)
+    }
+  }, [email,password]);
+
+
+  const  handleSubmit = () =>{
+
+    if(!email){
+      setEmailError(true)
+    }else{
+      setEmailError(false)
+    }
+
+    if(!password){
+      setPasswordError(true)
+    }else{
+      setPasswordError(false)
+    }
+
+    if(!email || !password){
+      return false
+    }
+
+     return navigation.replace("AppDrawer")
+
+  }
+  
   return (
     <ImageBackground
     source={{ uri: "https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?semt=ais_hybrid&w=740" }} // replace with your image
@@ -29,7 +63,7 @@ export default function Login({navigation}) {
 
     <View className="items-center mt-10">
    
-      <Text className="text-white text-4xl font-bold">Octal Infotech<Slack className=""
+      <Text className="text-white text-4xl font-bold">Octal Infotech<Slack
       size={26} color={"white"} />
         </Text>
       
@@ -49,9 +83,12 @@ export default function Login({navigation}) {
             className="flex-1 ml-2 p-2"
             placeholder="Email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(text)=>setEmail(text)}
           />
+
+          
         </View>
+          { emailError ? <Text className="text-red-400">please required email</Text> : ''}
 
       
         <View className="flex-row items-center border-b border-gray-300 mb-6">
@@ -61,7 +98,7 @@ export default function Login({navigation}) {
             placeholder="Password"
             secureTextEntry={!showPass}
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(text)=>setPassword(text)}
             
           />
           <TouchableOpacity onPress={() => setShowPass(!showPass)}>
@@ -73,9 +110,13 @@ export default function Login({navigation}) {
         
           </TouchableOpacity>
         </View>
+        
+        
+        { passwordError ? <Text className="text-red-400">please required password</Text> : ''}
+
 
        
-        <TouchableOpacity  onPress={() => navigation.replace("AppDrawer")} className="bg-red-500 rounded-full py-3 mb-4">
+        <TouchableOpacity  onPress={handleSubmit} className="bg-red-500 rounded-full py-3 mb-4">
           <Text className="text-white text-center text-lg font-semibold">
             Sign in
           </Text>
